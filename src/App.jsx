@@ -2,6 +2,7 @@ import './App.css'
 import Home from './components/Home'
 import Location from './components/Location'
 import Instructions from './components/InstructiontoRoutes'
+import MyMap from './components/MyMap'
 import { Routes, Route } from 'react-router-dom'
 import { Navbar } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
@@ -35,7 +36,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/location' element={<Location />} />
           <Route path='/instructions' element={<Instructions />} />
-
+          <Route path='/map' element={<MyMap />} />
         </Routes>
        
       </div>

@@ -1,8 +1,13 @@
-import L from 'leaflet'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
-import axios from 'axios'
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet'
 
-
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', 
+})
 
 const MyMap = () => {
     
@@ -14,9 +19,11 @@ const MyMap = () => {
         
         <MapContainer center={position} zoom={13} style={{height: "100vh", width: "100%" }}>
 
-            <TileLayer  url={`https://api.geoapify.com/v1/routing?waypoints=50.96209827745463%2C4.414458883409225%7C50.429137079078345%2C5.00088081232559&mode=drive&apiKey=1800779777654fe28628fb22b7809016`}
-                attribution='&copy; <a href=https://www.geoapify.com/>Geoapify <a/> contributors'
-            />
+            <TileLayer  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a
+                href="https://www.openstreetmap.org/copyright">OpenStreet
+                Map</a> contributors'
+            />  
             
             <Marker position={position}>
 
@@ -24,7 +31,7 @@ const MyMap = () => {
                     You Are Here Hyderabad
                 </Popup>
 
-            </Marker>
+            </Marker> 
 
         
         </MapContainer>
